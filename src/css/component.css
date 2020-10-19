@@ -186,11 +186,11 @@ body {
 .csstransformspreserve3d .details ul { padding: 60px 30px 0 70px }
 
 .details ul li {
-    margin: 0 0 10px;
+    margin: 0 0 0px;
     font-weight: 300;
 }
 
-.details ul li:not(:first-child) { font-weight: 700 }
+.details ul li:not(:first-child) { font-weight: 450 }
 
 .details ul li:first-child {
     position: relative;
@@ -384,7 +384,7 @@ body {
     margin: 0;
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 14em;
+    font-size: 8em;
     font-family: "Six Caps", sans-serif;
 }
 
