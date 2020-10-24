@@ -20,7 +20,7 @@
 }
 
 body {
-	font-family: 'Lato', Arial, sans-serif;
+	font-family: cursive, sans-serif,"Cardo";
 	color: #64696a;
 	background: #fff;
 }
@@ -120,6 +120,7 @@ a:focus {
 	font-size: 1.1em;
 	padding: 3em 0;
 	overflow: hidden;
+	font-family: "Abril Fatface", serif;
 }
 
 .related span {
