@@ -11,128 +11,146 @@
 (function() {
 
 	var supportAnimations = 'WebkitAnimation' in document.body.style ||
-			'MozAnimation' in document.body.style ||
-			'msAnimation' in document.body.style ||
-			'OAnimation' in document.body.style ||
-			'animation' in document.body.style,
+		'MozAnimation' in document.body.style ||
+		'msAnimation' in document.body.style ||
+		'OAnimation' in document.body.style ||
+		'animation' in document.body.style,
 		animEndEventNames = {
-			'WebkitAnimation' : 'webkitAnimationEnd',
-			'OAnimation' : 'oAnimationEnd',
-			'msAnimation' : 'MSAnimationEnd',
-			'animation' : 'animationend'
+			'WebkitAnimation': 'webkitAnimationEnd',
+			'OAnimation': 'oAnimationEnd',
+			'msAnimation': 'MSAnimationEnd',
+			'animation': 'animationend'
 		},
 		// animation end event name
-		animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ],
-		scrollWrap = document.getElementById( 'scroll-wrap' ),
+		animEndEventName = animEndEventNames[Modernizr.prefixed('animation')],
+		scrollWrap = document.getElementById('scroll-wrap'),
 		docscroll = 0,
-		books = document.querySelectorAll( '#bookshelf > figure' );
+		books = document.querySelectorAll('#bookshelf > figure');
 
 	function scrollY() {
 		return window.pageYOffset || window.document.documentElement.scrollTop;
 	}
 
-	function Book( el ) {
+	function Book(el) {
 		this.el = el;
-		this.book = this.el.querySelector( '.book' );
-		this.ctrls = this.el.querySelector( '.buttons' );
-		this.details = this.el.querySelector( '.details' );
+		this.book = this.el.querySelector('.book');
+		this.ctrls = this.el.querySelector('.buttons');
+		this.details = this.el.querySelector('.details');
 		// create the necessary structure for the books to rotate in 3d
 		this._layout();
 
-		this.bbWrapper = document.getElementById( this.book.getAttribute( 'data-book' ) );
-		if( this.bbWrapper ) {
+		this.bbWrapper = document.getElementById(this.book.getAttribute('data-book'));
+		if (this.bbWrapper) {
 			this._initBookBlock();
 		}
 		this._initEvents();
 	}
 
 	Book.prototype._layout = function() {
-		if( Modernizr.csstransforms3d ) {
-			this.book.innerHTML = '<div class="cover"><div class="front"></div><div class="inner inner-left"></div></div><div class="inner inner-right"></div>';
-			var perspective = document.createElement( 'div' );
+		if (Modernizr.csstransforms3d) {
+			this.book.innerHTML =
+				'<div class="cover"><div class="front"></div><div class="inner inner-left"></div></div><div class="inner inner-right"></div>';
+			var perspective = document.createElement('div');
 			perspective.className = 'perspective';
-			perspective.appendChild( this.book );
-			this.el.insertBefore( perspective, this.ctrls );
+			perspective.appendChild(this.book);
+			this.el.insertBefore(perspective, this.ctrls);
 		}
-		if( this.details ) {
-			this.closeDetailsCtrl = document.createElement( 'span' )
+		if (this.details) {
+			this.closeDetailsCtrl = document.createElement('span')
 			this.closeDetailsCtrl.className = 'close-details';
-			this.details.appendChild( this.closeDetailsCtrl );
+			this.details.appendChild(this.closeDetailsCtrl);
 		}
 	}
 
 	Book.prototype._initBookBlock = function() {
 		// initialize bookblock instance
-		this.bb = new BookBlock( this.bbWrapper.querySelector( '.bb-bookblock' ), {
-			speed : 700,
-			shadowSides : 0.8,
-			shadowFlip : 0.4
-		} );
+		this.bb = new BookBlock(this.bbWrapper.querySelector('.bb-bookblock'), {
+			speed: 700,
+			shadowSides: 0.8,
+			shadowFlip: 0.4
+		});
 		// boobkblock controls
-		this.ctrlBBClose = this.bbWrapper.querySelector( ' .bb-nav-close' );
-		this.ctrlBBNext = this.bbWrapper.querySelector( ' .bb-nav-next' );
-		this.ctrlBBPrev = this.bbWrapper.querySelector( ' .bb-nav-prev' );
+		this.ctrlBBClose = this.bbWrapper.querySelector(' .bb-nav-close');
+		this.ctrlBBNext = this.bbWrapper.querySelector(' .bb-nav-next');
+		this.ctrlBBPrev = this.bbWrapper.querySelector(' .bb-nav-prev');
 	}
 
 	Book.prototype._initEvents = function() {
 		var self = this;
-		if( !this.ctrls ) return;
+		if (!this.ctrls) return;
 
-		if( this.bb ) {
-			this.ctrls.querySelector( 'a:nth-child(1)' ).addEventListener( 'click', function( ev ) { ev.preventDefault(); self._open(); } );
-			this.ctrlBBClose.addEventListener( 'click', function( ev ) { ev.preventDefault(); self._close(); } );
-			this.ctrlBBNext.addEventListener( 'click', function( ev ) { ev.preventDefault(); self._nextPage(); } );
-			this.ctrlBBPrev.addEventListener( 'click', function( ev ) { ev.preventDefault(); self._prevPage(); } );
+		if (this.bb) {
+			this.ctrls.querySelector('a:nth-child(1)').addEventListener('click', function(ev) {
+				ev.preventDefault();
+				self._open();
+			});
+			this.ctrlBBClose.addEventListener('click', function(ev) {
+				ev.preventDefault();
+				self._close();
+			});
+			this.ctrlBBNext.addEventListener('click', function(ev) {
+				ev.preventDefault();
+				self._nextPage();
+			});
+			this.ctrlBBPrev.addEventListener('click', function(ev) {
+				ev.preventDefault();
+				self._prevPage();
+			});
 		}
 
-		if( this.details ) {
-			this.ctrls.querySelector( 'a:nth-child(2)' ).addEventListener( 'click', function( ev ) { ev.preventDefault(); self._showDetails(); } );
-			this.closeDetailsCtrl.addEventListener( 'click', function() { self._hideDetails(); } );
+		if (this.details) {
+			this.ctrls.querySelector('a:nth-child(2)').addEventListener('click', function(ev) {
+				ev.preventDefault();
+				self._showDetails();
+			});
+			this.closeDetailsCtrl.addEventListener('click', function() {
+				self._hideDetails();
+			});
 		}
 	}
 
 	Book.prototype._open = function() {
 		docscroll = scrollY();
-		
-		classie.add( this.el, 'open' );
-		classie.add( this.bbWrapper, 'show' );
+
+		classie.add(this.el, 'open');
+		classie.add(this.bbWrapper, 'show');
 
 		var self = this,
-			onOpenBookEndFn = function( ev ) {
-				this.removeEventListener( animEndEventName, onOpenBookEndFn );
+			onOpenBookEndFn = function(ev) {
+				this.removeEventListener(animEndEventName, onOpenBookEndFn);
 				document.body.scrollTop = document.documentElement.scrollTop = 0;
-				classie.add( scrollWrap, 'hide-overflow' );
+				classie.add(scrollWrap, 'hide-overflow');
 			};
 
-		if( supportAnimations ) {
-			this.bbWrapper.addEventListener( animEndEventName, onOpenBookEndFn );
-		}
-		else {
+		if (supportAnimations) {
+			this.bbWrapper.addEventListener(animEndEventName, onOpenBookEndFn);
+		} else {
 			onOpenBookEndFn.call();
 		}
 	}
 
 	Book.prototype._close = function() {
-		classie.remove( scrollWrap, 'hide-overflow' );
-		setTimeout( function() { document.body.scrollTop = document.documentElement.scrollTop = docscroll; }, 25 );
-		classie.remove( this.el, 'open' );
-		classie.add( this.el, 'close' );
-		classie.remove( this.bbWrapper, 'show' );
-		classie.add( this.bbWrapper, 'hide' );
+		classie.remove(scrollWrap, 'hide-overflow');
+		setTimeout(function() {
+			document.body.scrollTop = document.documentElement.scrollTop = docscroll;
+		}, 25);
+		classie.remove(this.el, 'open');
+		classie.add(this.el, 'close');
+		classie.remove(this.bbWrapper, 'show');
+		classie.add(this.bbWrapper, 'hide');
 
 		var self = this,
-			onCloseBookEndFn = function( ev ) {
-				this.removeEventListener( animEndEventName, onCloseBookEndFn );
+			onCloseBookEndFn = function(ev) {
+				this.removeEventListener(animEndEventName, onCloseBookEndFn);
 				// reset bookblock starting page
 				self.bb.jump(1);
-				classie.remove( self.el, 'close' );
-				classie.remove( self.bbWrapper, 'hide' );
+				classie.remove(self.el, 'close');
+				classie.remove(self.bbWrapper, 'hide');
 			};
 
-		if( supportAnimations ) {
-			this.bbWrapper.addEventListener( animEndEventName, onCloseBookEndFn );
-		}
-		else {
+		if (supportAnimations) {
+			this.bbWrapper.addEventListener(animEndEventName, onCloseBookEndFn);
+		} else {
 			onCloseBookEndFn.call();
 		}
 	}
@@ -146,19 +164,40 @@
 	}
 
 	Book.prototype._showDetails = function() {
-		classie.add( this.el, 'details-open' );
+		classie.add(this.el, 'details-open');
 	}
 
 	Book.prototype._hideDetails = function() {
-		classie.remove( this.el, 'details-open' );
+		classie.remove(this.el, 'details-open');
 	}
 
 	function init() {
-		[].slice.call( books ).forEach( function( el ) {
-			new Book( el );
-		} );
+		[].slice.call(books).forEach(function(el) {
+			new Book(el);
+		});
 	}
 
 	init();
+	document.onkeydown = function(ev) {
+		var ev = ev || window.event;
+		var prev = document.getElementsByClassName("bb-nav-prev");
+		var next = document.getElementsByClassName("bb-nav-next");
+		var dtl = document.getElementById("scroll-wrap");
+		var showed = dtl.className.indexOf('hide-overflow') !== -1;
+		if (!next || !prev || !dtl || !showed) {
+			return;
+		}
 
+		switch (ev.keyCode) {
+			case 37:
+			case 100:
+				prev[0].click();
+				break;
+			case 32:
+			case 39:
+			case 102:
+				next[0].click();
+				break;
+		}
+	}
 })();
