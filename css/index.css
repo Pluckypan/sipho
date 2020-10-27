@@ -35,16 +35,6 @@ a:focus {
 	color: #fff;
 }
 
-.codrops-header {
-	position: relative;
-	margin: 0 auto;
-	padding: 3em 1em;
-	color: #fff;
-	text-align: center;
-	background: url(http://img.1991th.com/tuchongeter/statics/O3X2C2YV7HLHQU8) no-repeat center center;
-	background-size: cover;
-}
-
 .codrops-header h1 {
 	font-size: 1.85em;
 	line-height: 1.3;

@@ -575,26 +575,6 @@ h6 {
 
 /****** Custom book colors and borders *****/
 
-/* Custom book covers */
-
-.no-csstransforms3d .book[data-book="book-1"],
-.no-js .book[data-book="book-1"],
-.book[data-book="book-1"] .front {
-	background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(211, 211, 211, 0.1) 5%, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 9%, rgba(0, 0, 0, 0.01) 100%), url(../img/cover1.svg), #009bdb;
-}
-
-.book[data-book="book-1"] .inner {
-	border-color: #009bdb
-}
-
-.book[data-book="book-1"] .cover::before {
-	background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.01) 1%, rgba(0, 0, 0, 0.1) 50%, transparent 100%), url(../img/spine1.svg), #009bdb;
-}
-
-#book-1 {
-	border-color: #009bdb
-}
-
 
 /* border around bookblock same as book cover color*/
 .JayCenter {

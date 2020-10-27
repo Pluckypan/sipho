@@ -10,10 +10,40 @@
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="http://img.1991th.com/tuchongeter/statics/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/bookblock.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
 		<script src="js/modernizr.custom.js"></script>
+		<style rel="stylesheet" type="text/css">
+			.codrops-header {
+				position: relative;
+				margin: 0 auto;
+				padding: 3em 1em;
+				color: #fff;
+				text-align: center;
+				background: url(http://img.1991th.com/tuchongeter/statics/O3X2C2YV7HLHQU8) no-repeat center center;
+				background-size: cover;
+			}
+
+			/* book-1 */
+			.no-csstransforms3d .book[data-book="book-1"],
+			.no-js .book[data-book="book-1"],
+			.book[data-book="book-1"] .front {
+				background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(211, 211, 211, 0.1) 5%, rgba(255, 255, 255, 0.15) 5%, rgba(255, 255, 255, 0.1) 9%, rgba(0, 0, 0, 0.01) 100%), url(../img/cover1.svg), #009bdb;
+			}
+
+			.book[data-book="book-1"] .inner {
+				border-color: #009bdb
+			}
+
+			.book[data-book="book-1"] .cover::before {
+				background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.01) 1%, rgba(0, 0, 0, 0.1) 50%, transparent 100%), url(../img/spine1.svg), #009bdb;
+			}
+
+			#book-1 {
+				border-color: #009bdb
+			}
+		</style>
 	</head>
 	<body>
 		<div id="scroll-wrap" class="container">
@@ -67,7 +97,7 @@
 				</div>
 				<div class="bb-item">
 					<div class="bb-custom-side gallery-container">
-						<img src="http://img.1991th.com/tuchongeter/photograph/XL9YOREXER7FXQF" class="gallery-full"/>
+						<img src="http://img.1991th.com/tuchongeter/photograph/XL9YOREXER7FXQF" class="gallery-full" />
 						<h3 class="gallery-caption">暗黑森林 墨绿色</h3>
 					</div>
 					<div class="bb-custom-side gallery-container">
@@ -88,12 +118,21 @@
 					<div class="bb-custom-side JayPoem">
 						<div>
 							<h3>太阳</h3>
-							<p>太阳是个火球<br>她吐出火苗<br>蒸干了银河<br>河里的鱼儿跳上岸<br>变成了星星</p>
+							<p>太阳是个火球</p>
+							<p>她吐出火苗</p>
+							<p>蒸干了银河</p>
+							<p>河里的鱼儿跳上岸</p>
+							<p>变成了星星</p>
 						</div>
 						<div>
 							<h5>两个名字</h5>
-							<p>青蛙说他有两个名字<br>小时候叫蝌蚪<br>长大了就叫青蛙</p>
-							<p>我要告诉大家<br>以前叫弟弟<br>现在叫哥哥<br>因为我有个妹妹啦</p>
+							<p>青蛙说他有两个名字</p>
+							<p>小时候叫蝌蚪</p>
+							<p>长大了就叫青蛙</p>
+							<p>我要告诉大家</p>
+							<p>以前叫弟弟</p>
+							<p>现在叫哥哥</p>
+							<p>因为我有个妹妹啦</p>
 						</div>
 					</div>
 					<div class="bb-custom-side JayPoem">
@@ -106,7 +145,12 @@
 						</div>
 						<div>
 							<h3>青蛙</h3>
-							<p>夏天真热啊<br>青蛙喝了一肚子水<br>都不觉得凉快<br>唉，要能吃个瓜就好了<br>难怪他每天都在喊：<br>瓜！瓜！</p>
+							<p>夏天真热啊</p>
+							<p>青蛙喝了一肚子水</p>
+							<p>都不觉得凉快</p>
+							<p>唉，要能吃个瓜就好了</p>
+							<p>难怪他每天都在喊：</p>
+							<p>瓜！瓜！</p>
 						</div>
 					</div>
 				</div>
@@ -117,7 +161,7 @@
 				<a href="#" class="bb-nav-close">Close</a>
 			</nav>
 		</div>
-		
+
 		<script src="js/bookblock.min.js"></script>
 		<script src="js/classie.js"></script>
 		<script src="js/bookshelf.js"></script>
