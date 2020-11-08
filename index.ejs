@@ -94,7 +94,7 @@
 					<div class="bb-bookblock">
 					    <%var pc = book.page.length%>
 						<%var mod = pc%2%>
-						<%var divide =mod==0?(pc/2):(pc/2+1)%>
+						<%var divide =mod==0?(pc/2):(parseInt(pc/2)+1)%>
 						<%for(var i=0;i<divide;i++){%>
 							<%var j = i*2;%>
 							<%var k = j+1;%>
@@ -103,9 +103,7 @@
 								<%if(k<pc){%>
 									<%-book.page[k]%>
 								<%}else{%>
-									<div class="bb-custom-side section">
-										
-									</div>
+									
 								<%}%>
 							</div>
 						<%}%>
