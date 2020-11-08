@@ -126,7 +126,7 @@ body {
 	color: rgba(100, 105, 106, 0.7);
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	font-size: 0.85em;
+	font-size: 0.95em;
 	line-height: 1.5;
 }
 
@@ -323,8 +323,8 @@ body {
 	box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.05), inset -30px 0 40px -20px rgba(0, 0, 0, 0.15);
 }
 
-.JayChou h3,
-.JayChou p {
+.section h3,
+.section p {
 	position: absolute;
 	top: 40%;
 	left: 50%;
@@ -335,118 +335,128 @@ body {
 	transform: translateY(-50%) translateX(-50%);
 }
 
-.JayChou h3 {
+.section h3 {
 	text-align: center;
 	font-weight: 400;
 	font-size: 3.5em;
-	font-family: cursive, serif,"Sacramento";
+	font-family: cursive, serif, "Sacramento";
 }
 
-.JayChou h3 span {
+.section h3 span {
 	display: block;
 	padding: 5px 0 15px;
 	border-top: 1px solid #333;
 	border-bottom: 1px solid #333;
 	text-transform: uppercase;
 	font-size: 2em;
-	font-family: cursive, sans-serif,"Six Caps";
+	font-family: cursive, sans-serif, "Six Caps";
 	line-height: 1;
 }
 
-.JayChou p {
+.section p {
 	padding: 0 10px;
 	text-align: right;
 	font-style: normal;
 	font-size: 1.10em;
-	font-family: cursive, sans-serif,"Cardo";
+	font-family: cursive, sans-serif, "Cardo";
 }
 
-.JayPoem {
-	background: -webkit-linear-gradient(left, #64696a 50%, white 50%);
-	background: linear-gradient(to right, #64696a 50%, white 50%);
+.poem {
+	text-align: center;
+	height: 100%;
+	padding: 10%;
 }
 
-.JayPoem:first-child {
-	background: -webkit-linear-gradient(left, white 50%, #64696a 50%);
-	background: linear-gradient(to right, white 50%, #64696a 50%);
+.dark-mode {
+	background: #64696a;
+	color: #fff;
 }
 
-.JayPoem div {
-	position: absolute;
-	bottom: 5%;
-	left: 50%;
-	padding: 0 10% 10%;
-	width: 50%;
+.dark-mode:before {
+	box-shadow: none;
 }
 
-.JayPoem div:first-child {
-	left: 0
-}
-
-.JayPoem:first-child div:last-child,
-.JayPoem:last-child div:first-child {
-	color: #fff
-}
-
-.JayPoem h1,
+.poem h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
 	margin: 0;
-	font-family: cursive, sans-serif,"Cardo";
+	font-family: cursive, sans-serif, "Cardo";
 }
 
-.JayPoem h1 {
-	font-size: 12em;
+.poem span {
+	font-size: 0.2em !important;
+	display: inline;
 }
 
-.JayPoem h2 {
-	font-size: 9em;
+.poem h1 {
+	font-size: 10em;
 }
 
-.JayPoem h3 {
+.poem h2 {
+	font-size: 8em;
+}
+
+.poem h3 {
 	font-size: 6em;
 }
 
-.JayPoem h4 {
+.poem h4 {
 	font-size: 4em;
 }
 
-.JayPoem h5 {
+.poem h5 {
 	font-size: 3em;
 }
 
-.JayPoem h6 {
-	font-size: 2em;
+.poem h6 {
+	font-size: 1.5em;
 }
 
+.poem p {
+	margin-top: 1em;
+	font-size: 1.2em;
+}
 
-
-.gallery-container {
+.gallery {
 	display: block;
 	text-align: center;
 }
 
-.gallery-full {
-	max-width: 80%;
-	max-height: 80%;
-	border: 2px solid #333;
-	margin: 10%;
+.gallery p {
+	display: inline;
 }
 
-.gallery-caption {
-	right: 50%;
+.gallery img {
+	max-width: 80% !important;
+	;
+	max-height: 80% !important;
+	;
+	border: 2px solid #333 !important;
+	;
+	margin: 10% !important;
+}
+
+.gallery h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	right: 50% !important;
+	;
 	font-family: cursive, serif;
 }
 
 
-.page-layout div {
+.intro div {
 	padding: 10%
 }
 
-.page-layout h1,
+.intro h1,
 h2,
 h3,
 h4,
@@ -457,36 +467,36 @@ h6 {
 	font-weight: 400;
 }
 
-.page-layout h1 {
-	font-size: 15em;
-}
-
-.page-layout h2 {
+.intro h1 {
 	font-size: 12em;
 }
 
-.page-layout h3 {
+.intro h2 {
 	font-size: 9em;
 }
 
-.page-layout h4 {
+.intro h3 {
 	font-size: 6em;
 }
 
-.page-layout h5 {
-	font-size: 3em;
+.intro h4 {
+	font-size: 4em;
 }
 
-.page-layout h6 {
+.intro h5 {
+	font-size: 2em;
+}
+
+.intro h6 {
 	font-size: 1em;
 }
 
-.page-layout p {
+.intro p {
 	margin: 0;
 	text-indent: 5px;
 	font-style: normal;
-	font-size: 1.15rem;
-	font-family: cursive, serif, "Cardo" ;
+	font-size: 1.18rem;
+	font-family: cursive, serif, "Cardo";
 }
 
 /* Book navigation */
@@ -572,18 +582,6 @@ h6 {
 	-webkit-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
-
-/****** Custom book colors and borders *****/
-
-
-/* border around bookblock same as book cover color*/
-.JayCenter {
-	width: 100%;
-	height: 100%;
-	text-align: center;
-}
-
-/****** Transitions ******/
 
 /* Book open / view inside */
 
@@ -963,7 +961,7 @@ h6 {
 		font-size: 75%
 	}
 
-	.page-layout h3 {
+	.intro h3 {
 		font-size: 9em
 	}
 }
@@ -973,7 +971,7 @@ h6 {
 		font-size: 60%
 	}
 
-	.page-layout h3 {
+	.intro h3 {
 		font-size: 6em
 	}
 }
@@ -983,23 +981,23 @@ h6 {
 		font-size: 40%
 	}
 
-	.JayPoem div {
+	.poem div {
 		top: 50%;
 		left: 0;
 		width: 100%;
 		height: 50%;
 	}
 
-	.JayPoem div:first-child {
+	.poem div:first-child {
 		top: 0
 	}
 
-	.JayPoem {
+	.poem {
 		background: -webkit-linear-gradient(top, #64696a 50%, white 50%);
 		background: linear-gradient(to bottom, #64696a 50%, white 50%);
 	}
 
-	.JayPoem:first-child {
+	.poem:first-child {
 		background: -webkit-linear-gradient(top, white 50%, #64696a 50%);
 		background: linear-gradient(to bottom, white 50%, #64696a 50%);
 	}

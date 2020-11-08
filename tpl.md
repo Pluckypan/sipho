@@ -10,13 +10,13 @@
 	"spine":"http://img.1991th.com/tuchongeter/statics/single-gallery-01.jpg"
 } eedoc -->
 
-<caption class="x"/>
+<name class="x"/>
 2020
 
-<subtitle class="x"/>
+<desc class="x"/>
 中国尊
 
-<desc class="x"/>
+<intro class="x"/>
 - 太阳是个火球<br>她吐出火苗<br>蒸干了银河<br>河里的鱼儿跳上岸<br>变成了星星
 - 张圣杰「太阳」
 - 2010.12.09 九岁

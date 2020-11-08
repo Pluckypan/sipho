@@ -175,6 +175,11 @@
 		[].slice.call(books).forEach(function(el) {
 			new Book(el);
 		});
+		var eleYear = document.getElementsByClassName('year');
+		console.log(eleYear);
+		if (eleYear && eleYear.length > 0) {
+			eleYear[eleYear.length - 1].innerHTML = new Date().getFullYear();
+		}
 	}
 
 	init();
