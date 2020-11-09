@@ -47,3 +47,7 @@ eedoc 摄影类网站模板
 1. 文字水平居中 `.center`
 2. margin-top 10、20 px `.mt10 .mt20 .mt30 .mt40 .mt60 .mt80 .mt100`
 3. padding-top 10、20 px `.pt10 .pt20 .pt30 .pt40 .pt60 .pt80 .pt100`
+
+## 书本尺寸
+1. 封面 cover 180x260 [cover](http://www.1991.wiki/tpl/2/img/cover1.svg) 
+2. 侧面 spine  20x260 [spine](http://www.1991.wiki/tpl/2/img/spine1.svg)
