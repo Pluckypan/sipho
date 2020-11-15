@@ -45,8 +45,20 @@ eedoc 摄影类网站模板
 
 ## 其他
 1. 文字水平居中 `.center`
-2. margin-top 10、20 px `.mt10 .mt20 .mt30 .mt40 .mt60 .mt80 .mt100`
-3. padding-top 10、20 px `.pt10 .pt20 .pt30 .pt40 .pt60 .pt80 .pt100`
+2. 文字水平居左 `.left`
+3. 文字水平居右 `.right`
+4. margin 10、20 px `.m10 .m20 .m30 .m40 .m60 .m80 .m100`
+5. padding 10、20 px `.p10 .p20 .p30 .p40 .p60 .p80 .p100`
+6. margin-top 10、20 px `.mt10 .mt20 .mt30 .mt40 .mt60 .mt80 .mt100`
+7. margin-right 10、20 px `.mr10 .mr20 .mr30 .mr40 .mr60 .mr80 .mr100`
+8. margin-bottom 10、20 px `.mb10 .mb20 .mb30 .mb40 .mb60 .mb80 .mb100`
+9. margin-left 10、20 px `.ml10 .ml20 .ml30 .ml40 .ml60 .ml80 .ml100`
+10. padding-top 10、20 px `.pt10 .pt20 .pt30 .pt40 .pt60 .pt80 .pt100`
+11. padding-right 10、20 px `.pr10 .pr20 .pr30 .pr40 .pr60 .pr80 .pr100`
+12. padding-bottom 10、20 px `.pb10 .pb20 .pb30 .pb40 .pb60 .pb80 .pb100`
+13. padding-left 10、20 px `.pl10 .pl20 .pl30 .pl40 .pl60 .pl80 .pl100`
+14. font-size 14px `.ft14 .ft16 .ft18 .ft20 .ft22 .ft24 .ft26 .ft28 .ft30 .ft32`
+
 
 ## 书本尺寸
 1. 封面 cover 180x260 [cover](http://www.1991.wiki/tpl/2/img/cover1.svg) 
