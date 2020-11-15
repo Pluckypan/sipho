@@ -31,6 +31,57 @@
 		return window.pageYOffset || window.document.documentElement.scrollTop;
 	}
 
+	function hasClass(ele, cls) {
+		cls = cls || '';
+		if (cls.replace(/\s/g, '').length == 0) return false;
+		return new RegExp(' ' + cls + ' ').test(' ' + ele.className + ' ');
+	}
+
+	function addClass(ele, cls) {
+		if (!hasClass(ele, cls)) {
+			ele.className = ele.className == '' ? cls : ele.className + ' ' + cls;
+		}
+	}
+
+	function removeClass(ele, cls) {
+		if (hasClass(ele, cls)) {
+			var newClass = ' ' + ele.className.replace(/[\t\r\n]/g, '') + ' ';
+			while (newClass.indexOf(' ' + cls + ' ') >= 0) {
+				newClass = newClass.replace(' ' + cls + ' ', ' ');
+			}
+			ele.className = newClass.replace(/^\s+|\s+$/g, '');
+		}
+	}
+
+	function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null && r.length > 2) {
+			return unescape(r[2]);
+		}
+		return null;
+	};
+
+	function updateQueryStringParameter(uri, key, value) {
+		if (!value) {
+			return uri;
+		}
+		var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+		var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+		if (uri.match(re)) {
+			return uri.replace(re, '$1' + key + "=" + value + '$2');
+		} else {
+			return uri + separator + key + "=" + value;
+		}
+	}
+
+	function replaceParamVal(paramName, replaceWith) {
+		var newurl = updateQueryStringParameter(window.location.href, paramName, replaceWith);
+		window.history.replaceState({
+			path: newurl
+		}, '', newurl);
+	}
+
 	function Book(el) {
 		this.el = el;
 		this.book = this.el.querySelector('.book');
@@ -70,9 +121,9 @@
 			shadowFlip: 0.4
 		});
 		// boobkblock controls
-		this.ctrlBBClose = this.bbWrapper.querySelector(' .bb-nav-close');
-		this.ctrlBBNext = this.bbWrapper.querySelector(' .bb-nav-next');
-		this.ctrlBBPrev = this.bbWrapper.querySelector(' .bb-nav-prev');
+		this.ctrlBBClose = this.bbWrapper.querySelector('.bb-nav-close');
+		this.ctrlBBNext = this.bbWrapper.querySelector('.bb-nav-next');
+		this.ctrlBBPrev = this.bbWrapper.querySelector('.bb-nav-prev');
 	}
 
 	Book.prototype._initEvents = function() {
@@ -127,6 +178,10 @@
 		} else {
 			onOpenBookEndFn.call();
 		}
+
+		if (this.bbWrapper.id) {
+			replaceParamVal("bid", this.bbWrapper.id);
+		}
 	}
 
 	Book.prototype._close = function() {
@@ -153,14 +208,20 @@
 		} else {
 			onCloseBookEndFn.call();
 		}
+		replaceParamVal("bid", '0');
+		replaceParamVal("page", '1');
 	}
 
 	Book.prototype._nextPage = function() {
 		this.bb.next();
+		var cur = this.bb.currentIdx;
+		replaceParamVal("page", cur + 1);
 	}
 
 	Book.prototype._prevPage = function() {
 		this.bb.prev();
+		var cur = this.bb.currentIdx;
+		replaceParamVal("page", cur + 1);
 	}
 
 	Book.prototype._showDetails = function() {
@@ -172,36 +233,53 @@
 	}
 
 	function init() {
-		[].slice.call(books).forEach(function(el) {
-			new Book(el);
+		window.bookdata = {};
+		[].slice.call(books).forEach(function(el, i) {
+			var book = new Book(el);
+			var _id = el.querySelector(".book").getAttribute('data-book');
+			window.bookdata[_id] = book;
+			book;
 		});
 		var eleYear = document.getElementsByClassName('year');
-		console.log(eleYear);
 		if (eleYear && eleYear.length > 0) {
 			eleYear[eleYear.length - 1].innerHTML = new Date().getFullYear();
+		}
+		var bid = getQueryString("bid");
+		if (bid && bid != '0') {
+			var page = getQueryString("page");
+			var cbook = document.getElementById(bid);
+			console.log('bid=' + bid + ' page=' + page);
+			if (cbook) {
+				addClass(cbook, 'show');
+				if (page && page != '0') {
+					window.bookdata[bid].bb.jump(page);
+				}
+			}
 		}
 	}
 
 	init();
 	document.onkeydown = function(ev) {
 		var ev = ev || window.event;
-		var prev = document.getElementsByClassName("bb-nav-prev");
-		var next = document.getElementsByClassName("bb-nav-next");
-		var dtl = document.getElementById("scroll-wrap");
-		var showed = dtl.className.indexOf('hide-overflow') !== -1;
-		if (!next || !prev || !dtl || !showed) {
+		var prev = document.querySelector(".show .bb-nav-prev");
+		var next = document.querySelector(".show .bb-nav-next");
+		var close = document.querySelector('.show .bb-nav-close');
+		if (!next || !prev || !close) {
 			return;
 		}
 
 		switch (ev.keyCode) {
+			case 27:
+				close.click();
+				break;
 			case 37:
 			case 100:
-				prev[0].click();
+				prev.click();
 				break;
 			case 32:
 			case 39:
 			case 102:
-				next[0].click();
+				next.click();
 				break;
 		}
 	}
