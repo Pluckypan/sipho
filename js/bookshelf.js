@@ -256,6 +256,14 @@
 				}
 			}
 		}
+		// image lazyload 
+		window.lazySizesConfig = window.lazySizesConfig || {};
+		// use .lazy instead of .lazyload
+		window.lazySizesConfig.lazyClass = 'lazyload';	
+		// use data-original instead of data-src
+		lazySizesConfig.srcAttr = 'data-src';	
+		//page is optimized for fast onload event
+		lazySizesConfig.loadMode = 1;
 	}
 
 	init();

@@ -16,6 +16,10 @@
 		<link rel="stylesheet" type="text/css" href="<%=relative_path%>css/bookblock.css" />
 		<link rel="stylesheet" type="text/css" href="<%=relative_path%>css/component.css" />
 		<script src="<%=relative_path%>js/modernizr.custom.js"></script>
+		<script src="//cdn.bootcdn.net/ajax/libs/lazysizes/5.2.0/lazysizes.min.js" async=""></script>
+		<link href="<%=relative_path%>css/viewer.css" rel="stylesheet" />
+		<script src="<%=relative_path%>js/jquery.min.js"></script>
+		<script src="<%=relative_path%>js/viewer.js"></script>
 		<style rel="stylesheet" type="text/css">
 		<%pageBackground= describe.background?describe.background:'http://img.1991th.com/tuchongeter/statics/O3X2C2YV7HLHQU8'%>
 			.codrops-header {
@@ -92,9 +96,9 @@
 		<!-- Fullscreen BookBlock -->
 		<!-- for demo purpose we repeat each bookblock -->
 		<%if(allPost&&allPost.length>0){%>
-			<%allPost.forEach(function(book,i){%>
-				<div class="bb-custom-wrapper" id="book-<%=i%>">
-					<div class="bb-bookblock">
+			<%allPost.forEach(function(book,index){%>
+				<div class="bb-custom-wrapper" id="book-<%=index%>">
+					 <div class="bb-bookblock">
 					    <%var pc = book.page.length%>
 						<%var mod = pc%2%>
 						<%var divide =mod==0?(pc/2):(parseInt(pc/2)+1)%>
@@ -117,6 +121,10 @@
 						<a href="#" class="bb-nav-next">Next</a>
 						<a href="#" class="bb-nav-close">Close</a>
 					</nav>
+					<script>
+						$('#book-<%=index%>').viewer("destory", {});
+						$('#book-<%=index%>').viewer("init", {});
+					</script>
 				</div>
 			<%})%>
 		<%}%>
