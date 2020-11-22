@@ -259,9 +259,9 @@
 		// image lazyload 
 		window.lazySizesConfig = window.lazySizesConfig || {};
 		// use .lazy instead of .lazyload
-		window.lazySizesConfig.lazyClass = 'lazyload';	
+		window.lazySizesConfig.lazyClass = 'lazyload';
 		// use data-original instead of data-src
-		lazySizesConfig.srcAttr = 'data-src';	
+		lazySizesConfig.srcAttr = 'data-src';
 		//page is optimized for fast onload event
 		lazySizesConfig.loadMode = 1;
 	}
@@ -272,7 +272,10 @@
 		var prev = document.querySelector(".show .bb-nav-prev");
 		var next = document.querySelector(".show .bb-nav-next");
 		var close = document.querySelector('.show .bb-nav-close');
-		if (!next || !prev || !close) {
+		var vc = document.querySelectorAll('.viewer-in');
+		var vcShow = vc != null && vc.length > 0
+		console.log(vcShow);
+		if (!next || !prev || !close || vcShow) {
 			return;
 		}
 
