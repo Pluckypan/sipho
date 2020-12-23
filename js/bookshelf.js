@@ -131,9 +131,17 @@
 		if (!this.ctrls) return;
 
 		if (this.bb) {
-			this.ctrls.querySelector('a:nth-child(1)').addEventListener('click', function(ev) {
-				ev.preventDefault();
-				self._open();
+			var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+			var dtlBtn = this.ctrls.querySelector('a:nth-child(1)');
+			dtlBtn.addEventListener('click', function(ev) {
+				if ((isAndroid || isiOS) && dtlBtn.href) {
+					window.open(dtlBtn.href)
+				} else {
+					ev.preventDefault();
+					self._open();
+				}
 			});
 			this.ctrlBBClose.addEventListener('click', function(ev) {
 				ev.preventDefault();

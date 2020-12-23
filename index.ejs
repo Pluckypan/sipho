@@ -57,10 +57,7 @@
 		<div id="scroll-wrap" class="container">
 			<header class="codrops-header">
 				<div class="codrops-top clearfix">
-					<a class="codrops-icon codrops-icon-prev" href="#"><span></span></a>
-					<span class="right">
-						<a class="codrops-icon codrops-icon-drop" href="#"><span></span></a>
-					</span>
+
 				</div>
 				<h1><%=config.title%><span><%=config.user.name%></span></h1>
 			</header>
@@ -71,7 +68,7 @@
 							<figure>
 								<div class="book" data-book="book-<%=i%>"></div>
 								<div class="buttons">
-									<a href="#">详情</a>
+									<a href="<%=relative_path%><%=book.url%>">详情</a>
 									<%if(book.desc&&book.desc.length>0){%>
 										<a href="#">简介</a>
 									<%}%>
