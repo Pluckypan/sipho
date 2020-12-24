@@ -137,11 +137,10 @@
 			var dtlBtn = this.ctrls.querySelector('a:nth-child(1)');
 			dtlBtn.addEventListener('click', function(ev) {
 				if ((isAndroid || isiOS) && dtlBtn.href) {
-					window.open(dtlBtn.href)
-				} else {
-					ev.preventDefault();
-					self._open();
+					return;//window.open(dtlBtn.href)
 				}
+				ev.preventDefault();
+				self._open();
 			});
 			this.ctrlBBClose.addEventListener('click', function(ev) {
 				ev.preventDefault();
